@@ -37,16 +37,15 @@ pub fn (mut app App) authenticate() vweb.Result {
 		data := json.decode(AuthenticationPayload, app.req.data) or {
 			app.set_status(403, 'Forbidden')
 			return app.json(AuthenticationResult{
-				is_superadmin: false,
-				result: 'deny',
+				is_superadmin: false
+				result: 'deny'
 			})
 		}
 
-
 		if data.username == 'alwin' && data.password == '123' {
 			return app.json(AuthenticationResult{
-				is_superadmin: false,
-				result: 'allow',
+				is_superadmin: false
+				result: 'allow'
 			})
 		}
 	}
